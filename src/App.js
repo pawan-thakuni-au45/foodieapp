@@ -41,7 +41,7 @@ const AppLayout=()=>{
             path:'/contact',
             element:<Contact/>
          },{
-            path:'/resmenu/:id',
+            path:'/resmenu/:resid',
             element:<RestaurentMenu/>
          }
       ]

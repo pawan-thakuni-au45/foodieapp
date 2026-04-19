@@ -12,7 +12,9 @@ const RestaurentCards = () => {
 
      const [searchText,setRearchText]=useState("")
 
-    console.log(resData);
+    //   const restcardPromoted=WithPromotedLabel(RestaurentCards)
+
+    
 
     useEffect(() => {
 
@@ -29,7 +31,8 @@ const RestaurentCards = () => {
 
 
     }
-    console.log(resData,'resData');
+    
+   
 
 
 
@@ -77,9 +80,11 @@ const RestaurentCards = () => {
                 {rating.map((n) => (
                       <Link
             key={n?.info.id}
-            to={"/resmenu/" + n?.info.id}
-          >
-                   <div  className="border border-red-900 p-2 m-2 w-80">
+            to={"/resmenu/"+n.info?.id}
+          >  
+          
+        
+                      <div  className="border border-red-900 p-2 m-2 w-80">
                         <img src={n.info.cloudinaryImageId}></img>
                         <h1>{n.info?.name}</h1>
                         <h1>{n.info?.cuisines.join(" , ")}</h1>
@@ -87,6 +92,7 @@ const RestaurentCards = () => {
 
 
                     </div>
+                    
 
               </Link>  ))}
 
@@ -97,6 +103,15 @@ const RestaurentCards = () => {
     )
 }
 
+
+//  export const WithPromotedLabel=(RestaurentCards)=>{
+//         return (props)=>{
+//             return <div>
+//              <label>Promoted</label>
+//              <RestaurentCards {...props}/>
+//             </div>
+//         }
+//     }
 
 export default RestaurentCards
 
