@@ -1,11 +1,14 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../utils/cartSlice'
 
 const ItemList = ({data}) => {
+
+  const dispatch=useDispatch()
+  console.log("dispa",dispatch)
     console.log("dataherepgle",data)
 
-    if(data.itemCards.length===0){
-        return<h1>RUK jaon </h1>
-    }
+   
   return (
     <div className='' >
          {data?.itemCards?.map((e)=>(
@@ -22,7 +25,9 @@ const ItemList = ({data}) => {
             
             <div className="w-3/12">
             <div className="absolute">
-            <button className="p-2 bg-white ">Add+</button>
+            <button className="p-2 bg-white " onClick={()=>{
+dispatch(addItem(e))
+            }}>Add+</button>
            </div>
            
            image here

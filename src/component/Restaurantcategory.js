@@ -5,7 +5,7 @@ export const Restaurentcategory =({data,showItem,setShowIndex})=>{
 
     
     console.log("menu cars id",data)
-    return <div className=" w-6/12  bg-gray-100 ">
+    return <div className=" w-6/12 m-auto bg-gray-100 ">
     <div className=" bg-gray-200 mb-2 ">
     <div className="flex justify-between items-center" onClick={()=>(
         setShowIndex()

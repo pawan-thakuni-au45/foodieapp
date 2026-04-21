@@ -10,10 +10,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
     "axios": "^1.15.0",
     "parcel": "^2.16.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.14.1"
   },
   "devDependencies": {
