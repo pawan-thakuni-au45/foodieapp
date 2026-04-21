@@ -5,7 +5,7 @@ import RestaurentCards from "./RestaurentCards"
 import { Restaurentcategory } from "./Restaurantcategory"
 const RestaurentMenu = () => {
     const [item, setItem] = useState([])
- const [showIndex,setShowIndex]=useState(0)
+ const [showIndex,setShowIndex]=useState(null)
  
     const {resid}=useParams()
 

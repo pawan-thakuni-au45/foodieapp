@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios";
 import useUserOnline from "../utils/useOnlineFeature";
 import { Link } from "react-router";
+import { UserContext } from "../utils/UserContext";
 
 
 const RestaurentCards = () => {
@@ -11,6 +12,8 @@ const RestaurentCards = () => {
     const [rating,setRating]=useState([])
 
      const [searchText,setRearchText]=useState("")
+
+     const logged=useContext(UserContext)
 
     //   const restcardPromoted=WithPromotedLabel(RestaurentCards)
 
@@ -38,6 +41,8 @@ const RestaurentCards = () => {
 
     const online = useUserOnline()
     if (online === false) return <h1>user is ofline</h1>
+
+    const data=useContext(UserContext)
 
 
     return resData?.length === 0 ? (
@@ -73,6 +78,13 @@ const RestaurentCards = () => {
                   </button>
                 </div>
 
+                <div className="ml-2">
+                <label>user</label>
+                <input type="text" className=" border border-black-800" value={data.loggedInUser} onChange={(e)=>(
+                    data.setUserName(e.target.value)
+                )}></input>
+                </div>
+
             </div>
 
 
@@ -89,7 +101,9 @@ const RestaurentCards = () => {
                         <h1>{n.info?.name}</h1>
                         <h1>{n.info?.cuisines.join(" , ")}</h1>
                         <h1>{n.info?.avgRating}</h1>
-
+                            <ul>
+                              <li>{logged.loggedInUser}</li>
+                            </ul>
 
                     </div>
                     

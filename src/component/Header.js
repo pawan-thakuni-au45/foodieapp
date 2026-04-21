@@ -1,8 +1,12 @@
 import {Link} from "react-router"
 import useUserOnline from "../utils/useOnlineFeature"
+import { useContext } from "react"
+import { UserContext } from "../utils/UserContext.js"
 
 
 const Header = () => {
+
+  const loogedIn=useContext(UserContext)
 
     const online=useUserOnline()
 
@@ -20,6 +24,7 @@ const Header = () => {
            <li className="px-3 font-bold underline"><Link to={'/'}>Home</Link></li>
        <li className="px-3"><Link to={'/about'}>About</Link></li>
            <li className="px-3"><Link to={'/contact'}>Contact</Link></li>
+           <li>{loogedIn.loggedInUser}</li>
          </ul>
     </div>
 

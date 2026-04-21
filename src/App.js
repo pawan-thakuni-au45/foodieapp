@@ -7,15 +7,32 @@ import { Home } from "./component/Home"
 import Contact from "./component/Contact"
 import About from "./component/About"
 import RestaurentMenu from "./component/RestaurentMenu"
+import { useEffect, useState } from "react"
+import { UserContext } from "./utils/UserContext"
 
 const AppLayout=()=>{
+   const [userName,setUserName]=useState()
+
+
+   useEffect(()=>{
+     const data={
+         loggedInUser:"rahul rawat"
+      }
+      setUserName(data.loggedInUser)
+   },[])
     
 
-    return <div>
+    
+    return(  
+      <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
+    <div>
+   
  <Header/>
     <Outlet/>
-      
+    
     </div>
+      </UserContext.Provider>
+    ) 
 }
     const route=createBrowserRouter(
         [

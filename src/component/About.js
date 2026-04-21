@@ -1,7 +1,7 @@
 const About =()=>{
 
     return <div>
-    abput
+      Abou
     </div>
 }
-export default About
+ 
