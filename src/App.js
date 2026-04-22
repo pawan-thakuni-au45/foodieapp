@@ -4,7 +4,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router"
 import Header from "./component/Header"
 import Body from "./component/Body"
 import { Home } from "./component/Home"
-import Contact from "./component/Contact"
+
 import {About} from "./component/About"
 import RestaurentMenu from "./component/RestaurentMenu"
 import { lazy, Suspense, useEffect, useState } from "react"
@@ -66,11 +66,7 @@ const AppLayout=()=>{
             element:<Cart/>
          },
       
-         
-         {
-            path:'/contact',
-            element:<Contact/>
-         },{
+      {
             path:'/resmenu/:resid',
             element:<RestaurentMenu/>
          },

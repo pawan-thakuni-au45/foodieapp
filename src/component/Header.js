@@ -31,7 +31,7 @@ const Header = () => {
        <li className="px-3"><Link to={'/grocery'}>Grocery</Link></li>
 
 
-           <li className="px-3"><Link to={'/contact'}>Contact</Link></li>
+         
            <li>{loogedIn.loggedInUser}</li>
          </ul>
     </div>
