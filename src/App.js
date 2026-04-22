@@ -7,12 +7,16 @@ import { Home } from "./component/Home"
 import Contact from "./component/Contact"
 import {About} from "./component/About"
 import RestaurentMenu from "./component/RestaurentMenu"
-import { useEffect, useState } from "react"
+import { lazy, Suspense, useEffect, useState } from "react"
 import { UserContext } from "./utils/UserContext"
 import { Provider } from "react-redux"
 import { appStore } from "./utils/appStore"
 import Cart from "./component/Cart"
-import {Grocery} from "./component/Grocery"
+
+
+
+const Grocery=lazy(()=>import("./component/Grocery"))
+
 
 const AppLayout=()=>{
    const [userName,setUserName]=useState()
@@ -72,7 +76,7 @@ const AppLayout=()=>{
          },
          {
             path:'/grocery',
-            element:<Grocery/>
+            element: <Suspense fallback={<h1>Lodaing...</h1>}><Grocery/></Suspense>
 
          },
       ]
