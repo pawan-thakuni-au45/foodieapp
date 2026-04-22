@@ -28,6 +28,7 @@ const Header = () => {
            <li className="px-3 font-bold underline"><Link to={'/'}>Home</Link></li>
        <li className="px-3"><Link to={'/about'}>About</Link></li>
        <li className="px-3"><Link to={'/cart'}>Cart item: {cartItem.length} </Link></li>
+       <li className="px-3"><Link to={'/grocery'}>Grocery</Link></li>
 
 
            <li className="px-3"><Link to={'/contact'}>Contact</Link></li>

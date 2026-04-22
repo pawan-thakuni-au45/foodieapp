@@ -3,6 +3,8 @@ import axios from "axios"
 import { useParams } from "react-router"
 import RestaurentCards from "./RestaurentCards"
 import { Restaurentcategory } from "./Restaurantcategory"
+import { RES_MENU } from "../utils/constant"
+import Shimmer from "./Shimmer"
 const RestaurentMenu = () => {
     const [item, setItem] = useState([])
  const [showIndex,setShowIndex]=useState(null)
@@ -19,7 +21,8 @@ const RestaurentMenu = () => {
     }, [])
     const fetchItemdata = async () => {
        
-        const res=await axios.get("https://corsproxy.io/https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=29.5936485&lng=79.6544208&restaurantId="+resid)
+        //const res=await axios.get("https://corsproxy.io/https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=29.5936485&lng=79.6544208&restaurantId="+resid)
+        const res=await axios.get(RES_MENU+resid)
         const json=res.data
         console.log("jsondata got the data",json)
         // setItem(json?.data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card?.card?.itemCards || [])
@@ -39,7 +42,7 @@ console.log("category=",category)
     console.log("items new",item)
 
     if(item.length===0){
-        return <h1>loading...</h1>
+        return <Shimmer/>
     }
   
     return <div className="text-center">

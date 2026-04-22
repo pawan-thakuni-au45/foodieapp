@@ -5,13 +5,14 @@ import Header from "./component/Header"
 import Body from "./component/Body"
 import { Home } from "./component/Home"
 import Contact from "./component/Contact"
-import About from "./component/About"
+import {About} from "./component/About"
 import RestaurentMenu from "./component/RestaurentMenu"
 import { useEffect, useState } from "react"
 import { UserContext } from "./utils/UserContext"
 import { Provider } from "react-redux"
 import { appStore } from "./utils/appStore"
 import Cart from "./component/Cart"
+import {Grocery} from "./component/Grocery"
 
 const AppLayout=()=>{
    const [userName,setUserName]=useState()
@@ -68,7 +69,12 @@ const AppLayout=()=>{
          },{
             path:'/resmenu/:resid',
             element:<RestaurentMenu/>
-         }
+         },
+         {
+            path:'/grocery',
+            element:<Grocery/>
+
+         },
       ]
 }
 ])

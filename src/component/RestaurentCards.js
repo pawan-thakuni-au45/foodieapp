@@ -3,6 +3,8 @@ import axios from "axios";
 import useUserOnline from "../utils/useOnlineFeature";
 import { Link } from "react-router";
 import { UserContext } from "../utils/UserContext";
+ import { SWIGGY_DATA } from "../utils/constant.js";
+import Shimmer from "./Shimmer.js";
 
 
 const RestaurentCards = () => {
@@ -26,7 +28,8 @@ const RestaurentCards = () => {
     }, []);
 
     const fetchData = async () => {
-        const response = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=29.5936485&lng=79.6544208&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+       // const response = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=29.5936485&lng=79.6544208&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+       const response=await axios.get(SWIGGY_DATA)
         const json = response.data
         console.log(json, 'data');
         setResData(json?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
@@ -34,6 +37,22 @@ const RestaurentCards = () => {
 
 
     }
+    console.log("resdata",resData)
+
+    useEffect(() => {
+         console.count("Debounced Effect Runs");
+  const timer = setTimeout(() => {
+    console.log("Filtering executed");
+    setResData(
+      resData.filter(item =>
+        item.info.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
+  }, 300);
+
+  return () => clearTimeout(timer);
+  console.log("Cleanup called");
+}, [searchText]);
     
    
 
@@ -46,7 +65,7 @@ const RestaurentCards = () => {
 
 
     return resData?.length === 0 ? (
-        <h1>Loading....</h1>
+        <Shimmer/>
     ) : (
         <div >
             <div className="flex mt-4">
@@ -67,20 +86,20 @@ const RestaurentCards = () => {
 
                 </div>
 
-                <div>
+                <div className="ml-3 border border-black hover:bg-gray-600 bg-green-300">
                   <button onClick={()=>{
                       const filterl=resData.filter((res)=>
                              res.info?.avgRating > 4
                       )
                       setRating(filterl)
                   }}>
-                  top rated
+                  Top Rated
                   </button>
                 </div>
 
-                <div className="ml-2">
-                <label>user</label>
-                <input type="text" className=" border border-black-800" value={data.loggedInUser} onChange={(e)=>(
+                <div className="ml-3">
+                <label className="ml-3">user :</label>
+                <input type="text" className=" border border-black ml-3" value={data.loggedInUser} onChange={(e)=>(
                     data.setUserName(e.target.value)
                 )}></input>
                 </div>
@@ -97,8 +116,20 @@ const RestaurentCards = () => {
           
         
                       <div  className="border border-red-900 p-2 m-2 w-80">
-                        <img src={n.info.cloudinaryImageId}></img>
-                        <h1>{n.info?.name}</h1>
+                        
+
+
+    
+
+  
+
+    
+
+    <img className=" h-[200px] w-[250px] p-4 rounded-2xl" alt='img-logo' src={ "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + n.info?.cloudinaryImageId
+}/>
+
+
+                       <h1>{n.info?.name}</h1>
                         <h1>{n.info?.cuisines.join(" , ")}</h1>
                         <h1>{n.info?.avgRating}</h1>
                             <ul>

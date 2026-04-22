@@ -30,7 +30,11 @@ dispatch(addItem(e))
             }}>Add+</button>
            </div>
            
-           image here
+  <img className=" h-[200px] w-[250px] p-4 rounded-2xl" alt='img-logo' src={ "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + e.card?.info?.
+imageId
+
+}/>
+          
            </div>
            </div>
 
