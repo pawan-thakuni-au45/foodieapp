@@ -21,8 +21,8 @@ install it manually(it uses jest framework)
 2-> 
 
 #setting up test in our app
--install react testing library
--install jest
+    -install react testing library
+    -install jest
 -install babel anf create configure file for it.
 -disable Babel transpilation in Parcel create .parce file(parcel docs)
 -jest congiruation=========(npx jest --init)
